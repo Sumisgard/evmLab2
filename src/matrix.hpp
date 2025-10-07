@@ -1,7 +1,14 @@
+#pragma once
+
 #include <vector>
+#include <iostream>
+#include <iomanip>
+#include <limits>
 
 using Matrix = std::vector<std::vector<double>>;
 using Labels = std::vector<char>;
+
+const double INF = std::numeric_limits<double>::infinity();
 
 namespace sumisgard
 {
@@ -9,10 +16,15 @@ namespace sumisgard
 class SpecialMatrix 
 {
 public:
-    SpecialMatrix(Matrix matrix);
+    SpecialMatrix(Matrix matrix, Labels labels);
+
+    void printMatrix() const;
+
 private:
     Matrix matrix;
     Labels labels;
+
+    static std::string formatValue(double val);
 };
 
 class SolvingWithMatrix
