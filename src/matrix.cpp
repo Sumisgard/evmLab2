@@ -42,4 +42,21 @@ void SpecialMatrix::printMatrix() const
     std::cout << "\n";
 }
 
+Matrix SpecialMatrix::multiply(const Matrix& A, const Matrix& B) {
+    int n = A.size();
+    std::vector<std::vector<double>> C(n, std::vector<double>(n, INF));
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            double minVal = INF;
+            for (int k = 0; k < n; ++k) {
+                if (A[i][k] == INF || B[k][j] == INF) continue;
+                double sum = A[i][k] + B[k][j];
+                if (sum < minVal) minVal = sum;
+            }
+            C[i][j] = minVal;
+        }
+    }
+    return C;
+}
+
 }
