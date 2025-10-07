@@ -24,5 +24,8 @@ int main(void) {
 
     network.printMatrix();
 
+    sumisgard::SolvingWithMatrix firstMethod(network);
+    firstMethod.solve();
+
     return 0;
 }

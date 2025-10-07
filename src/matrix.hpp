@@ -18,6 +18,7 @@ class SpecialMatrix
 public:
     SpecialMatrix() = default;
     SpecialMatrix(Matrix matrix, Labels labels);
+    SpecialMatrix(Matrix matrix);
 
     operator const Matrix() const;
 
@@ -39,6 +40,7 @@ private:
 class SolvingWithMatrix
 {
 public:
+    SolvingWithMatrix() = default;
     SolvingWithMatrix(SpecialMatrix L1);
     void solve();
 

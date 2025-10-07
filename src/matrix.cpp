@@ -14,6 +14,15 @@ SpecialMatrix::SpecialMatrix(Matrix matrix, Labels labels) {
     this->labels = labels;
 }
 
+SpecialMatrix::SpecialMatrix(Matrix matrix) {
+    this->matrix = matrix;
+
+    int size = matrix.size();
+    for (int i = 0; i < size; ++i) {
+        this->labels.push_back('A' + i);
+    }
+}
+
 std::string SpecialMatrix::formatValue(double val)
 {
     if (val == INF)
@@ -104,19 +113,19 @@ void SolvingWithMatrix::solve() {
     while (r < N) {
         L_curr = SpecialMatrix::matrixMultiply(L_prev, L1);
         r++;
-
         std::cout << "Матрица L^" << r << ":\n";
-        printMatrix(L_curr, labels);
+        L_curr.printMatrix();
 
-        // Проверка условия остановки: L^r == L^(r-1)
-        if (matricesEqual(L_curr, L_prev)) {
+        if (SpecialMatrix::matrixEqual(L_curr, L_prev)) {
             std::cout << "Условие остановки выполнено: L^" << r << " == L^" << (r-1) << "\n";
             std::cout << "Дистанционная матрица D = L^" << r << "\n";
-            return 0;
+            this->LD = L_curr;
+            return;
         }
-
         L_prev = L_curr;
     }
+
+    this->LD = L_curr;
 }
 
 }
