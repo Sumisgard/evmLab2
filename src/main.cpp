@@ -15,11 +15,11 @@
 int main(void) {
     sumisgard::SpecialMatrix network(
     {
-        {  0, INF, INF,  60,  5},
-        {INF,   0, INF, INF, 80},
-        {INF,  20,   0, INF, 35},
-        { 60, INF, INF,   0, 40},
-        {INF,  80,  35,  40,  0}
+        {  0, INF, INF,  60,  5}, // A
+        {INF,   0, INF, INF, 80}, // B
+        {INF,  20,   0, INF, 35}, // C
+        { 60, INF, INF,   0, 40}, // D
+        {INF,  80,  35,  40,  0}  // E
     },  {'A', 'B', 'C', 'D', 'E'});
 
     network.printMatrix();

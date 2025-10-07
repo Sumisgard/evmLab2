@@ -3,6 +3,12 @@
 namespace sumisgard
 {
 
+//////////////////////////////////////////////////////////////
+
+// SpecialMatrix class
+
+//////////////////////////////////////////////////////////////
+
 SpecialMatrix::SpecialMatrix(Matrix matrix, Labels labels) {
     this->matrix = matrix;
     this->labels = labels;
@@ -65,6 +71,52 @@ bool SpecialMatrix::matrixEqual(const Matrix& A, const Matrix& B) {
         for (int j = 0; j < n; ++j)
             if (A[i][j] != B[i][j]) return false;
     return true;
+}
+
+int SpecialMatrix::get_size() const {
+    return labels.size();
+}
+
+Matrix SpecialMatrix::get_matrix() const {
+    return this->matrix;
+}
+
+SpecialMatrix::operator const Matrix() const {
+    Matrix result(this->matrix);
+    return result;
+}
+
+//////////////////////////////////////////////////////////////
+
+// SolvingWithMatrix class
+
+//////////////////////////////////////////////////////////////
+
+SolvingWithMatrix::SolvingWithMatrix(SpecialMatrix L1) {
+    this->L1 = L1;
+}
+
+void SolvingWithMatrix::solve() {
+    int r = 1;
+    L_prev = L1;
+    int N = L1.get_size();
+
+    while (r < N) {
+        L_curr = SpecialMatrix::matrixMultiply(L_prev, L1);
+        r++;
+
+        std::cout << "Матрица L^" << r << ":\n";
+        printMatrix(L_curr, labels);
+
+        // Проверка условия остановки: L^r == L^(r-1)
+        if (matricesEqual(L_curr, L_prev)) {
+            std::cout << "Условие остановки выполнено: L^" << r << " == L^" << (r-1) << "\n";
+            std::cout << "Дистанционная матрица D = L^" << r << "\n";
+            return 0;
+        }
+
+        L_prev = L_curr;
+    }
 }
 
 }
