@@ -25,7 +25,8 @@ private:
     Labels labels;
 
     static std::string formatValue(double val);
-    static Matrix multiply(const Matrix& A, const Matrix& B);
+    static Matrix matrixMultiply(const Matrix& A, const Matrix& B);
+    static bool matrixEqual(const Matrix& A, const Matrix& B);
 };
 
 class SolvingWithMatrix

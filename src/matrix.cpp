@@ -42,7 +42,7 @@ void SpecialMatrix::printMatrix() const
     std::cout << "\n";
 }
 
-Matrix SpecialMatrix::multiply(const Matrix& A, const Matrix& B) {
+Matrix SpecialMatrix::matrixMultiply(const Matrix& A, const Matrix& B) {
     int n = A.size();
     std::vector<std::vector<double>> C(n, std::vector<double>(n, INF));
     for (int i = 0; i < n; ++i) {
@@ -57,6 +57,14 @@ Matrix SpecialMatrix::multiply(const Matrix& A, const Matrix& B) {
         }
     }
     return C;
+}
+
+bool SpecialMatrix::matrixEqual(const Matrix& A, const Matrix& B) {
+    int n = A.size();
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            if (A[i][j] != B[i][j]) return false;
+    return true;
 }
 
 }
