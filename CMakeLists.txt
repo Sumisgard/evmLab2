@@ -8,7 +8,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/bin)
 
-set(MY_SOURCES ${CMAKE_SOURCE_DIR}/src/main.cpp)
+set(MY_SOURCES 
+    ${CMAKE_SOURCE_DIR}/src/main.cpp
+    ${CMAKE_SOURCE_DIR}/src/matrix.cpp
+)
 
 add_executable(${PROJECT_NAME}
     ${MY_SOURCES}
