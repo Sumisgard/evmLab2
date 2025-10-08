@@ -11,6 +11,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/bin)
 set(MY_SOURCES 
     ${CMAKE_SOURCE_DIR}/src/main.cpp
     ${CMAKE_SOURCE_DIR}/src/matrix.cpp
+    ${CMAKE_SOURCE_DIR}/src/floyd.cpp
 )
 
 add_executable(${PROJECT_NAME}

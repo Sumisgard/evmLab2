@@ -28,6 +28,7 @@ public:
     static bool matrixEqual(const Matrix& A, const Matrix& B);
 
     Matrix get_matrix() const;
+    Labels get_labels() const;
     int get_size() const;
     
 private:
@@ -43,6 +44,8 @@ public:
     SolvingWithMatrix() = default;
     SolvingWithMatrix(SpecialMatrix L1);
     void solve();
+
+    SpecialMatrix get_LD() const;
 
 private:
     SpecialMatrix L1;

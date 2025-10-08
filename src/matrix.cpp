@@ -28,7 +28,7 @@ std::string SpecialMatrix::formatValue(double val)
     if (val == INF)
         return "inf";
     else
-        return std::to_string(static_cast<int>(val)); // или используйте stringstream для форматирования
+        return std::to_string(static_cast<int>(val));
 }
 
 void SpecialMatrix::printMatrix() const
@@ -90,6 +90,10 @@ Matrix SpecialMatrix::get_matrix() const {
     return this->matrix;
 }
 
+Labels SpecialMatrix::get_labels() const {
+    return this->labels;
+}
+
 SpecialMatrix::operator const Matrix() const {
     Matrix result(this->matrix);
     return result;
@@ -126,6 +130,10 @@ void SolvingWithMatrix::solve() {
     }
 
     this->LD = L_curr;
+}
+
+SpecialMatrix SolvingWithMatrix::get_LD() const {
+    return this->LD;
 }
 
 }

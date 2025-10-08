@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "matrix.hpp"
+#include "floyd.hpp"
 
 // N = 5, j = 7
 /*
@@ -26,6 +27,18 @@ int main(void) {
 
     sumisgard::SolvingWithMatrix firstMethod(network);
     firstMethod.solve();
+
+    sumisgard::FloydMethod floyd(network, firstMethod.get_LD()); // вам нужно добавить getLD()
+    floyd.computeDelta();
+    floyd.printDelta();
+
+    // Пример восстановления пути от A к E:
+    auto path = floyd.reconstructPath('A', 'E');
+    std::cout << "Путь от A к E: ";
+    for (char node : path) {
+        std::cout << node << " ";
+    }
+    std::cout << "\n";
 
     return 0;
 }
