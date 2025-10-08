@@ -122,7 +122,7 @@ void SolvingWithMatrix::solve() {
 
         if (SpecialMatrix::matrixEqual(L_curr, L_prev)) {
             std::cout << "Условие остановки выполнено: L^" << r << " == L^" << (r-1) << "\n";
-            std::cout << "Дистанционная матрица D = L^" << r << "\n";
+            std::cout << "Дистанционная матрица D = L^" << r - 1 << "\n";
             this->LD = L_curr;
             return;
         }
