@@ -22,7 +22,7 @@ int main(void) {
         { 60, INF, INF,   0, 40}, // D
         {INF,  80,  35,  40,  0}  // E
     },  {'A', 'B', 'C', 'D', 'E'});
-    std::cout << "Матрица L^2: \n";
+    std::cout << "Матрица L^1: \n";
     network.printMatrix();
 
     sumisgard::SolvingWithMatrix firstMethod(network);
