@@ -41,6 +41,11 @@ void FloydMethod::computeDelta()
             double minDist = INF;
             char bestNext = 0;
 
+            if (i == j) {
+                Delta[i][j] = indexToLabel(i); // δ_ii = i
+                continue;
+            }   
+
             // Перебираем все возможные первые шаги k
             for (int k = 0; k < N; ++k) {
                 if (Gamma[i][k] == INF || D[k][j] == INF)
